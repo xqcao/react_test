@@ -23,7 +23,7 @@ jobs:
         run: docker ps
 
       - name: execute wget
-        run: wget http://localhost:3000
+        run: wget http://localhost:3000 && cat index.html
         
       - name: Ping/Pong Check
         run: curl -I http://localhost:3000 | grep "HTTP/1.1 200 OK" || exit 1
