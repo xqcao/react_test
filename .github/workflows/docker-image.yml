@@ -1,8 +1,3 @@
-Sure, here's an example GitHub workflow that builds a Docker image from your code and runs a container using that image:
-
-    Create a .github/workflows/main.yml file in your GitHub repository with the following content:
-
-yaml
 
 name: Build and Run Docker Container
 
