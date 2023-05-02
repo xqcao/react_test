@@ -19,5 +19,9 @@ jobs:
       - name: Run Docker container
         run: docker run -d -p 80:80 --name my-container reactwebapp:1.0
 
+      - name: check Docker container
+        run: docker ps
+
+
       - name: Ping/Pong Check
         run: curl -I http://localhost | grep "HTTP/1.1 200 OK" || exit 1
