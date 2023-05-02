@@ -17,7 +17,7 @@ jobs:
         run: docker build -t reactwebapp:1.0 .
 
       - name: Run Docker container
-        run: docker run -d -p 80:3000 --name my-container reactwebapp:1.0
+        run: docker run -d -p 3000:3000 --name my-container reactwebapp:1.0
 
       - name: check Docker container
         run: docker ps
