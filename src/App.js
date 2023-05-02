@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, Link } from "react-router-dom";
 
+import * as Comps from "./components";
+
+const routes = [
+  { name: "welcome", path: "/", component: Comps.Welcome },
+  { name: "about", path: "/about", component: Comps.About },
+  { name: "counter", path: "/contact", component: Comps.Counter },
+  { name: "todos", path: "/todos", component: Comps.Todos },
+  { name: "comments", path: "/comments", component: Comps.Comments },
+];
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Single Web app</h2>
+      <ol>
+        {routes.map((el, idx) => (
+          <li key={el.name + "-" + idx}>
+            <Link to={el.path}>{el.name}</Link>
+          </li>
+        ))}
+      </ol>
+      <hr />
+      <Routes>
+        {routes.map((el, idx) => (
+          <Route
+            key={el.name + "_" + idx}
+            path={el.path}
+            element={<el.component />}
+          />
+        ))}
+      </Routes>
     </div>
   );
 }
