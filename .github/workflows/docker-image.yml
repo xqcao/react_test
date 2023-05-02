@@ -1,18 +1,28 @@
-name: Docker Image CI
+Sure, here's an example GitHub workflow that builds a Docker image from your code and runs a container using that image:
+
+    Create a .github/workflows/main.yml file in your GitHub repository with the following content:
+
+yaml
+
+name: Build and Run Docker Container
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
-
-  build:
-
+  build-and-run:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        run: docker build -t reactwebapp:1.0 .
+
+      - name: Run Docker container
+        run: docker run -d -p 3000:3000 --name my-container reactwebapp:1.0
+
+      - name: Ping/Pong Check
+        run: curl --fail http://localhost:3000 && echo "Pong!" || exit 1
