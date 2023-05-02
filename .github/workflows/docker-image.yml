@@ -22,6 +22,8 @@ jobs:
       - name: check Docker container
         run: docker ps
 
-
+      - name: execute wget
+        run: wget http://localhost:3000
+        
       - name: Ping/Pong Check
         run: curl -I http://localhost:3000 | grep "HTTP/1.1 200 OK" || exit 1
