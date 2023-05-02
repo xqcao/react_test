@@ -20,4 +20,4 @@ jobs:
         run: docker run -d -p 3000:3000 --name my-container reactwebapp:1.0
 
       - name: Ping/Pong Check
-        run: curl --fail http://localhost:3000 && echo "Pong!" || exit 1
+        run: curl -I http://localhost:3000 | grep "HTTP/1.1 200 OK" || exit 1
