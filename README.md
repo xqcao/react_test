@@ -1,5 +1,5 @@
 #
-![CICD](https://github.com/xqcao/react_test/actions/workflows/docker-image.yml?badge.svg?branch=main)
+![CICD](https://github.com/xqcao/react_test/actions/workflows/docker-image.yml/badge.svg?branch=main)
 
 docker build -t ${username}/reactwebapp:10 .
 docker push ${username}/reactwebapp:1.0
